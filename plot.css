@@ -115,7 +115,7 @@ input[type="range"]:hover {
 #state-chart {
   position: absolute;
   left: 30vw;        /* stays neatly to the right of map */
-  top: 16vh;         /* move it slightly down */
+  top: 18vh;         /* move it slightly down */
   width: 45vw;       /* subplot width */
   height: 75vh;      /* slightly shorter for balance */
   display: block;

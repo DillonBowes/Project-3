@@ -1,0 +1,177 @@
+:root {
+  --slider-color: #a3cefc;
+  --thumb-size: 20px;
+  --thumb-offset: -7px;
+}
+body {
+  font-family: sans-serif;
+  margin-inline: max(1em, (100% - 100ch) / 2);
+  overflow: hidden;
+}
+#tooltip {
+  position: fixed;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 6px;
+  display: none;
+  pointer-events: none;
+  font-size: 12px;
+  text-align: center;
+}
+dl {
+  display: grid;
+  grid-template-columns: repeat(auto, 1fr);
+  column-gap: 1em;
+  dt {
+    grid-row: 1;
+  }
+  dd {
+    grid-row: 2;
+    font-size: 2em;
+    margin: 0;
+  }
+}
+select {
+  /* Basic styling for the select box */
+  background-color: #f0f0f0;
+  border: 1px solid black;
+  padding: 0.5em;
+  border-radius: 4px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+  width: 100%;
+  transition: 100ms;
+
+  /* Hiding the default arrow (browser-specific) */
+  -webkit-appearance: none; /* For Chrome, Safari */
+  -moz-appearance: none; /* For Firefox */
+  appearance: none; /* Standard property */
+}
+
+select:hover {
+  outline: none; /* Remove default focus outline */
+  background-color: #bfddfd;
+}
+input[type="range"] {
+  -webkit-appearance: none; /* For Chrome, Safari, Opera */
+  -moz-appearance: none; /* For Firefox */
+  appearance: none; /* Standard property */
+  width: 100%; /* Adjust as needed */
+  background: transparent; /* Remove default background */
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: var(--thumb-size); /* Set desired height */
+  width: var(--thumb-size); /* Set desired width */
+  border-radius: 50%; /* Make it a circle */
+  background: var(--slider-color); /* Set desired color */
+  cursor: pointer;
+  margin-top: var(
+    --thumb-offset
+  ); /* Adjust to center vertically on the track */
+  border: 1px solid black;
+  transition: 200ms;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px; /* Set desired height */
+  background: #ddd; /* Set desired background color */
+  border-radius: 4px; /* Round the corners */
+  box-shadow: 0 0 2px black;
+}
+
+input[type="range"]:hover {
+  --slider-color: #007bff;
+  --thumb-size: 30px;
+  --thumb-offset: -10.5px;
+}
+
+.states {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+}
+
+.selected {
+  transform: translate(var(--x),var(--y)) scale(1.5);
+}
+
+
+#chart {
+  overflow: visible;
+}
+
+/* === Subplot layout (fixed positioning and balance) === */
+#state-chart {
+  position: absolute;
+  left: 35vw;        /* stays neatly to the right of map */
+  top: 20vh;         /* move it slightly down */
+  width: 45vw;       /* subplot width */
+  height: 75vh;      /* slightly shorter for balance */
+  display: block;
+  overflow: visible;
+}
+
+/* State name message under subplot */
+#state-name {
+  position: absolute;
+  left: 50vw;        /* centered under chart */
+  top: 88vh;         /* raise it slightly */
+  width: 35vw;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+}
+
+
+/* === Year line and label === */
+.year-line {
+  stroke: #ff6666;
+  stroke-dasharray: 5 5;
+  stroke-width: 2px;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+
+
+/* === Legend === */
+#legend text {
+  font-family: sans-serif;
+  user-select: none;
+}
+
+#legend rect {
+  transition: 150ms ease;
+}
+
+/* Tooltip fade-in animation */
+#tooltip {
+  transition: opacity 0.15s ease-in-out;
+}
+
+#download-section {
+  position: absolute;
+  bottom: 2vh;
+  left: 3vw;
+  font-size: 14px;
+  color: #333;
+}
+#download-section a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+#download-section a:hover {
+  text-decoration: underline;
+}

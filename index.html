@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>US CMIP6 Temperature Map</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="plot.css" />
+  </head>
+  <body>
+    <h2>U.S. Average Annual Near Surface Temperature (TAS) by State</h2>
+
+    <dl>
+      <dt><strong>Prediction Model:</strong></dt>
+      <dd>
+        <select id="modelSelect"></select>
+      </dd>
+      <dt>
+        <strong>Year: <span id="yearLabel"></span></strong>
+      </dt>
+      <dd>
+        <input type="range" id="yearSlider" min="2015" max="2100" step="1" />
+      </dd>
+    </dl>
+
+    <div class="container">
+      <svg id="chart"></svg>
+      <svg id="state-chart"></svg>
+      <svg id="legend"></svg>
+    </div>
+    <h2 id="state-name">
+      Click a state to see temperature data aggregated by the chosen state
+    </h2>
+    <div id="tooltip"></div>
+    <!-- <svg id="map" width="1000" height="600"></svg> -->
+
+    <script src="plot.js" type="module"></script>
+    <div id="download-section">
+      <p>
+        You can download the writeup for this project
+        <a href="assets/Project 3 Writeup.pdf" download>here</a>.
+      </p>
+    </div>
+  </body>
+</html>
